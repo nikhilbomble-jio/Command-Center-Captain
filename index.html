@@ -136,8 +136,8 @@
       height: 80px;
       width: 80px;
       margin-bottom: 20px;
-      border-radius: 50%; /* Example styling, can be changed */
-      background-color: #F3B561; /* Placeholder background */
+      border-radius: 50%;
+      background-color: #F3B561;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -145,6 +145,14 @@
       color: white;
       font-weight: 700;
     }
+
+        #login-logo-img {
+      height: 80px; /* Adjust size as needed */
+      width: auto; /* Maintain aspect ratio */
+      margin-bottom: 20px;
+      /* Remove border-radius, background-color, font-size, color, font-weight from previous 'login-logo' if they were there */
+    }
+
 
     #login-page h2 {
       color: #333;
@@ -412,14 +420,14 @@
   </div>
 
   <div class="container" id="login-container">
-    <div id="login-page">
-      <!-- <div id="login-logo">JPSL</div> -->
-      <h2>Agent Garden Login</h2>
-      <input type="text" id="username" class="login-input" placeholder="Username">
-      <input type="password" id="password" class="login-input" placeholder="Password">
-      <button id="login-button" class="login-button">Login</button>
-      <p id="login-error"></p>
-    </div>
+          <div id="login-page">
+        <img src="src/assets/jfs-logo.svg" alt="Jio Logo" id="login-logo-img">
+        <h2>Agent Garden Login</h2>
+        <input type="text" id="username" class="login-input" placeholder="Username">
+        <input type="password" id="password" class="login-input" placeholder="Password">
+        <button id="login-button" class="login-button">Login</button>
+        <p id="login-error"></p>
+      </div>
   </div>
 
   <div id="main-content" class="hidden">
