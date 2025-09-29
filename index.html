@@ -1,25 +1,29 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
-    <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
-    <title>Jiopay Agent Garden</title>
-<meta name="description" content="Professional dashboard for Jio Financial Services. Access online and offline support with our responsive, mobile-ready platform." />
-    <link rel="icon" href="/src/assets/jfs-logo.svg" type="image/svg+xml">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#f59e0b">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="JFS Dashboard">
-    <meta name="author" content="JPSL" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet"
+    href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
+  <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+  <title>Jiopay Agent Garden</title>
+  <meta name="description"
+    content="Professional dashboard for Jio Financial Services. Access online and offline support with our responsive, mobile-ready platform." />
+  <link rel="icon" href="/src/assets/jfs-logo.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#f59e0b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="JFS Dashboard">
+  <meta name="author" content="JPSL" />
 
-    <meta property="og:title" content="JFS Dashboard - Financial Services Platform" />
-    <meta property="og:description" content="Professional dashboard for Jio Financial Services. Access online and offline support with our responsive, mobile-ready platform." />
-    <meta property="og:type" content="website" />
+  <meta property="og:title" content="JFS Dashboard - Financial Services Platform" />
+  <meta property="og:description"
+    content="Professional dashboard for Jio Financial Services. Access online and offline support with our responsive, mobile-ready platform." />
+  <meta property="og:type" content="website" />
 
   <style>
     body {
@@ -45,20 +49,38 @@
       justify-content: center;
       position: relative;
     }
+
     .header-logos {
       position: absolute;
       left: 20px;
       display: flex;
       align-items: center;
       gap: 8px;
-      /* NEW: added for mobile transition */
-      justify-content: flex-start; 
+      justify-content: flex-start;
     }
-    /* NEW: This helper class is used only on mobile to wrap logo and title */
+
+    /* Logout Button Styling */
+    #logout-button {
+      position: absolute;
+      right: 20px;
+      background: none;
+      color: #F3B561;
+      border: 1px solid #F3B561;
+      border-radius: 4px;
+      padding: 5px 10px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #logout-button:hover {
+      background-color: #f5e2cc;
+    }
+
     .header-content-mobile {
-      display: none; /* Hide on desktop */
+      display: none;
     }
-    /* ORIGINAL: H1 style for desktop (centered in .header but with logos on left) */
+
     .header h1 {
       font-size: 1.8rem;
       font-weight: 700;
@@ -66,6 +88,7 @@
       margin: 0;
       text-align: center;
     }
+
     .header img {
       height: 40px;
       max-width: 100%;
@@ -83,12 +106,80 @@
       width: 100%;
       box-sizing: border-box;
     }
+
     .welcome-text {
       font-size: 1rem;
       color: #555;
       margin-bottom: 20px;
       max-width: 600px;
       padding: 0 10px;
+    }
+
+    /* --- NEW/UPDATED: Login Page Styles --- */
+    #login-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+      width: 100%;
+      max-width: 400px;
+      padding: 40px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-top: 50px;
+    }
+
+    /* NEW: Logo styling */
+    #login-logo {
+      height: 80px;
+      width: 80px;
+      margin-bottom: 20px;
+      border-radius: 50%; /* Example styling, can be changed */
+      background-color: #F3B561; /* Placeholder background */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+      font-weight: 700;
+    }
+
+    #login-page h2 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .login-input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .login-button {
+      width: 100%;
+      background-color: #F3B561;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .login-button:hover {
+      background-color: #e0a354;
+    }
+
+    #login-error {
+      color: red;
+      margin-top: 15px;
+      font-size: 0.9rem;
     }
 
     /* Cards */
@@ -99,6 +190,7 @@
       gap: 15px;
       width: 100%;
     }
+
     .card {
       background-color: #fff;
       border-radius: 12px;
@@ -110,21 +202,25 @@
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
     }
+
     .card-icon {
       font-size: 2.2rem;
       color: #F3B561;
       margin-bottom: 10px;
     }
+
     .card-title {
       font-size: 1.2rem;
       font-weight: 700;
       color: #333;
       margin-bottom: 8px;
     }
+
     .card-description {
       font-size: 0.9rem;
       color: #777;
@@ -144,9 +240,11 @@
       box-sizing: border-box;
       height: calc(100vh - 70px);
     }
+
     .agent-view.active {
       display: flex;
     }
+
     .agent-info-panel {
       flex: 1;
       max-width: 400px;
@@ -157,15 +255,18 @@
       text-align: left;
       overflow-y: auto;
     }
+
     .agent-info-panel h2 {
       font-size: 1.3rem;
       font-weight: 700;
       margin-top: 0;
     }
+
     .agent-info-panel p {
       font-size: 0.95rem;
       color: #555;
     }
+
     .agent-info-panel .back-button {
       display: inline-block;
       margin-bottom: 15px;
@@ -173,6 +274,7 @@
       text-decoration: none;
       font-weight: 500;
     }
+
     .agent-container-full {
       flex: 2;
       background-color: #fff;
@@ -196,72 +298,73 @@
 
     /* Responsive Styles for Mobile (Max-width 768px) */
     @media (max-width: 768px) {
-        .header-title-desktop {
-          display: none; /* Hide on mobile */
-        }
-      /* Mobile Header Centering Logic */
-      .header-logos {
-        /* Hide the default desktop logos element on mobile */
-        display: none; 
+      .header-title-desktop {
+        display: none;
       }
+
+      .header-logos {
+        display: none;
+      }
+
       .header-content-mobile {
-        /* Show the mobile content wrapper */
         display: flex;
         flex-direction: column;
         align-items: center;
       }
+
       .header h1 {
-        /* Override desktop style to provide space below logo */
-        margin-top: 5px; 
+        margin-top: 5px;
         font-size: 1.5rem;
-        /* Ensure it's centered */
         text-align: center;
       }
-      
-      /* Existing mobile layout fixes for cards/agents */
+
       .cards-container {
         flex-direction: column;
         align-items: center;
       }
+
       .card {
         max-width: 90%;
       }
-      /* * FIX: Update the agent-view container 
-       * 1. Change height: 100vh to fit the screen size 
-       * 2. Added bottom padding for spacing below the send button.
-      */
+
       .agent-view {
         flex-direction: column;
-        height: calc(100vh - 70px); /* Use calc to subtract header height */
-        padding-bottom: 40px; /* Added spacing at the bottom */
+        height: calc(100vh - 70px);
+        padding-bottom: 40px;
       }
-      
+
       .agent-info-panel {
         max-width: 100%;
-        /* Adjusted height to be fixed/more predictable */
-        flex: 0 0 20vh;   
-        height: 20vh;     
+        flex: 0 0 20vh;
+        height: 20vh;
         overflow-y: auto;
       }
+
       .agent-container-full {
         max-width: 100%;
-        /* Adjusted height to take the rest of the available space */
         flex: 1;
-        height: 100%; /* Will grow to fill the remaining space */
-        min-height: 60vh; /* Ensure minimum size */
+        height: 100%;
+        min-height: 60vh;
+      }
+
+      #logout-button {
+        right: 10px;
       }
     }
 
     @media (max-width: 480px) {
-       .header-title-desktop {
-      display: none; /* Hide on mobile */
-    }
+      .header-title-desktop {
+        display: none;
+      }
+
       .header h1 {
         font-size: 1.3rem;
       }
+
       .card-title {
         font-size: 1rem;
       }
+
       .card-description {
         font-size: 0.85rem;
       }
@@ -289,161 +392,243 @@
     }
   </script>
   <div class="header">
-        <div class="header-logos">
-            <img src="https://storage.googleapis.com/jpslimages/images/Jio%20Payment%20Solutions%20Ltd.%20(3)%20(1).png" alt="Jio Payment Solutions Logo" onerror="this.onerror=null; this.src='https://placehold.co/50x50/f3b561/fff?text=Logo';">
-        </div>
-        
-        <div class="header-content-mobile">
-            <div class="header-logos-mobile">
-                <img src="https://storage.googleapis.com/jpslimages/images/Jio%20Payment%20Solutions%20Ltd.%20(3)%20(1).png" alt="Jio Payment Solutions Logo" onerror="this.onerror=null; this.src='https://placehold.co/50x50/f3b561/fff?text=Logo';">
-            </div>
-            <h1>Agent Garden</h1>
-        </div>
-        
-        <h1 class="header-title-desktop">Agent Garden</h1>
+    <div class="header-logos">
+      <img src="https://storage.googleapis.com/jpslimages/images/Jio%20Payment%20Solutions%20Ltd.%20(3)%20(1).png"
+        alt="Jio Payment Solutions Logo"
+        onerror="this.onerror=null; this.src='https://placehold.co/50x50/f3b561/fff?text=Logo';">
     </div>
 
+    <div class="header-content-mobile">
+      <div class="header-logos-mobile">
+        <img src="https://storage.googleapis.com/jpslimages/images/Jio%20Payment%20Solutions%20Ltd.%20(3)%20(1).png"
+          alt="Jio Payment Solutions Logo"
+          onerror="this.onerror=null; this.src='https://placehold.co/50x50/f3b561/fff?text=Logo';">
+      </div>
+      <h1>Agent Garden</h1>
+    </div>
+
+    <h1 class="header-title-desktop">Agent Garden</h1>
+    <button id="logout-button" class="hidden">Sign Out</button>
+  </div>
+
+  <div class="container" id="login-container">
+    <div id="login-page">
+      <!-- <div id="login-logo">JPSL</div> -->
+      <h2>Agent Garden Login</h2>
+      <input type="text" id="username" class="login-input" placeholder="Username">
+      <input type="password" id="password" class="login-input" placeholder="Password">
+      <button id="login-button" class="login-button">Login</button>
+      <p id="login-error"></p>
+    </div>
+  </div>
+
+  <div id="main-content" class="hidden">
     <div class="container" id="selection-container">
-        <p class="welcome-text">
-            Welcome to the Jiopay support portal. Please select an agent below that best matches your query.
-        </p>
-        <div class="cards-container">
-            <div class="card" data-agent-id="agent-4" data-agent-title="Command Center Captain" data-agent-desc="Provides real-time status & operational insights for the command center.">
-                <div class="card-icon"><i class="fas fa-star"></i></div>
-                <div class="card-title">Command Center Captain</div>
-                <div class="card-description">Provides real-time status & operational insights for the command center.</div>
-            </div>
-            
-            <div class="card" data-agent-id="agent-1" data-agent-title="Online Support Agent" data-agent-desc="Our agent provides support for all e-commerce related queries.">
-                <div class="card-icon"><i class="fas fa-store"></i></div>
-                <div class="card-title">Online Support Agent</div>
-                <div class="card-description">Our agent provides support for all e-commerce related queries.</div>
-            </div>
-            <div class="card" data-agent-id="agent-2" data-agent-title="Offline Support Agent" data-agent-desc="Our agent supports analysis related to offline merchant onboarding and voicebox installation.">
-                <div class="card-icon"><i class="fas fa-headset"></i></div>
-                <div class="card-title">Offline Support Agent</div>
-                <div class="card-description">Our agent supports analysis related to online merchant transactions.</div>
-            </div>
-             <div class="card" data-agent-id="agent-3" data-agent-title="Product Library Agent" data-agent-desc="This agent provides detailed information on our product catalog.">
-                <div class="card-icon"><i class="fas fa-book"></i></div>
-                <div class="card-title">Product Library Agent</div>
-                <div class="card-description">This agent provides detailed information on our product catalog.</div>
-            </div>
-            <div class="card" data-agent-id="agent-5" data-agent-title="Datalake Captain" data-agent-desc="Supports SQL query generation for Datalake.">
-                <div class="card-icon"><i class="fas fa-database"></i></div>
-                <div class="card-title">Datalake Captain</div>
-                <div class="card-description">Supports SQL query generation for Datalake.</div>
-            </div>
+      <p class="welcome-text">
+        Welcome to the Jiopay support portal. Please select an agent below that best matches your query.
+      </p>
+      <div class="cards-container">
+        <div class="card" data-agent-id="agent-4" data-agent-title="Command Center Captain"
+          data-agent-desc="Provides real-time status & operational insights for the command center.">
+          <div class="card-icon"><i class="fas fa-star"></i></div>
+          <div class="card-title">Command Center Captain</div>
+          <div class="card-description">Provides real-time status & operational insights for the command center.</div>
         </div>
+
+        <div class="card" data-agent-id="agent-1" data-agent-title="Online Support Agent"
+          data-agent-desc="Our agent provides support for all e-commerce related queries.">
+          <div class="card-icon"><i class="fas fa-store"></i></div>
+          <div class="card-title">Online Support Agent</div>
+          <div class="card-description">Our agent provides support for all e-commerce related queries.</div>
+        </div>
+        <div class="card" data-agent-id="agent-2" data-agent-title="Offline Support Agent"
+          data-agent-desc="Our agent supports analysis related to offline merchant onboarding and voicebox installation.">
+          <div class="card-icon"><i class="fas fa-headset"></i></div>
+          <div class="card-title">Offline Support Agent</div>
+          <div class="card-description">Our agent supports analysis related to online merchant transactions.</div>
+        </div>
+        <div class="card" data-agent-id="agent-3" data-agent-title="Product Library Agent"
+          data-agent-desc="This agent provides detailed information on our product catalog.">
+          <div class="card-icon"><i class="fas fa-book"></i></div>
+          <div class="card-title">Product Library Agent</div>
+          <div class="card-description">This agent provides detailed information on our product catalog.</div>
+        </div>
+        <div class="card" data-agent-id="agent-5" data-agent-title="Datalake Captain"
+          data-agent-desc="Supports SQL query generation for Datalake.">
+          <div class="card-icon"><i class="fas fa-database"></i></div>
+          <div class="card-title">Datalake Captain</div>
+          <div class="card-description">Supports SQL query generation for Datalake.</div>
+        </div>
+      </div>
     </div>
 
     <div class="agent-view hidden" id="agent-view">
-        <div class="agent-info-panel">
-            <a href="#" class="back-button" id="back-button">
-                <i class="fas fa-arrow-left"></i> Back to Agent Selection
-            </a>
-            <h2 id="agent-info-title"></h2>
-            <p id="agent-info-description"></p>
-        </div>
-        <div class="agent-container-full">
-            <df-messenger id="agent-1-messenger" class="hidden"
-                location="asia-south1"
-                project-id="skilful-union-457923-e9"
-                agent-id="2553d67b-aff8-47ed-b86a-fd1f895e6710"
-                language-code="en"
-                max-query-length="-1"
-                allow-feedback="all">
-                <df-messenger-chat chat-title="Online Support Agent"></df-messenger-chat>
-            </df-messenger>
+      <div class="agent-info-panel">
+        <a href="#" class="back-button" id="back-button">
+          <i class="fas fa-arrow-left"></i> Back to Agent Selection
+        </a>
+        <h2 id="agent-info-title"></h2>
+        <p id="agent-info-description"></p>
+      </div>
+      <div class="agent-container-full">
+        <df-messenger id="agent-1-messenger" class="hidden" location="asia-south1" project-id="skilful-union-457923-e9"
+          agent-id="2553d67b-aff8-47ed-b86a-fd1f895e6710" language-code="en" max-query-length="-1" allow-feedback="all">
+          <df-messenger-chat chat-title="Online Support Agent"></df-messenger-chat>
+        </df-messenger>
 
-            <df-messenger id="agent-2-messenger" class="hidden"
-                location="asia-south1"
-                project-id="skilful-union-457923-e9"
-                agent-id="4bef37a2-4780-4b7d-bd7a-36628b67358f"
-                language-code="en"
-                max-query-length="-1">
-                <df-messenger-chat chat-title="Offline Support Agent"></df-messenger-chat>
-            </df-messenger>
-            
-            <df-messenger id="agent-3-messenger" class="hidden"
-                location="asia-south1"
-                project-id="skilful-union-457923-e9"
-                agent-id="944bfc07-af16-452e-8d5d-2da31a705bf6"
-                language-code="en"
-                max-query-length="-1">
-                <df-messenger-chat chat-title="Product Library Agent"></df-messenger-chat>
-            </df-messenger>
+        <df-messenger id="agent-2-messenger" class="hidden" location="asia-south1" project-id="skilful-union-457923-e9"
+          agent-id="4bef37a2-4780-4b7d-bd7a-36628b67358f" language-code="en" max-query-length="-1">
+          <df-messenger-chat chat-title="Offline Support Agent"></df-messenger-chat>
+        </df-messenger>
 
-            <df-messenger id="agent-4-messenger" class="hidden"
-                location="asia-south1"
-                project-id="skilful-union-457923-e9"
-                agent-id="1037ca99-9fb8-4fa6-8cc1-67232c8b2a7e"
-                language-code="en"
-                max-query-length="-1">
-                <df-messenger-chat chat-title="Command Center Captain"></df-messenger-chat>
-            </df-messenger>
-            <df-messenger id="agent-5-messenger" class="hidden"
-                location="asia-south1"
-                project-id="skilful-union-457923-e9"
-                agent-id="86c917b9-dfe6-4138-ad10-533f0d895464"
-                language-code="en"
-                max-query-length="-1"
-                allow-feedback="all">
-                <df-messenger-chat chat-title="Datalake Captain"></df-messenger-chat>
-            </df-messenger>
-        </div>
+        <df-messenger id="agent-3-messenger" class="hidden" location="asia-south1" project-id="skilful-union-457923-e9"
+          agent-id="944bfc07-af16-452e-8d5d-2da31a705bf6" language-code="en" max-query-length="-1">
+          <df-messenger-chat chat-title="Product Library Agent"></df-messenger-chat>
+        </df-messenger>
+
+        <df-messenger id="agent-4-messenger" class="hidden" location="asia-south1" project-id="skilful-union-457923-e9"
+          agent-id="1037ca99-9fb8-4fa6-8cc1-67232c8b2a7e" language-code="en" max-query-length="-1">
+          <df-messenger-chat chat-title="Command Center Captain"></df-messenger-chat>
+        </df-messenger>
+        <df-messenger id="agent-5-messenger" class="hidden" location="asia-south1" project-id="skilful-union-457923-e9"
+          agent-id="86c917b9-dfe6-4138-ad10-533f0d895464" language-code="en" max-query-length="-1" allow-feedback="all">
+          <df-messenger-chat chat-title="Datalake Captain"></df-messenger-chat>
+        </df-messenger>
+      </div>
     </div>
+  </div>
 
-    <script>
-        const selectionContainer = document.getElementById('selection-container');
-        const agentView = document.getElementById('agent-view');
-        const agentInfoTitle = document.getElementById('agent-info-title');
-        const agentInfoDescription = document.getElementById('agent-info-description');
-        const backButton = document.getElementById('back-button');
+  <script>
+    // --- Login Credentials (UPDATED) ---
+    // All users share the same temporary password 'P@ssw0rd'
+    const VALID_USERS = [
+      'nikhil_bomble', 
+      'pruthiviraj_kadam', 
+      'rajendra_morya', 
+      'kaustubh_nagvekar'
+    ];
+    const TEMP_PASSWORD = 'P@ssw0rd';
 
-        const agentMessengers = {
-            'agent-1': document.getElementById('agent-1-messenger'),
-            'agent-2': document.getElementById('agent-2-messenger'),
-            'agent-3': document.getElementById('agent-3-messenger'),
-            // UPDATED: Added Agent 4 to the messenger map
-            'agent-4': document.getElementById('agent-4-messenger') ,
-            'agent-5': document.getElementById('agent-5-messenger') 
-        };
-        const cards = document.querySelectorAll('.card');
+    // --- DOM Elements ---
+    const loginContainer = document.getElementById('login-container');
+    const mainContent = document.getElementById('main-content');
+    const loginButton = document.getElementById('login-button');
+    const logoutButton = document.getElementById('logout-button');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const loginError = document.getElementById('login-error');
 
-        cards.forEach(card => {
-            card.addEventListener('click', () => {
-                const agentId = card.dataset.agentId;
-                const agentTitle = card.dataset.agentTitle;
-                const agentDesc = card.dataset.agentDesc;
-                
-                selectionContainer.classList.add('hidden');
-                agentView.classList.remove('hidden');
-                agentView.classList.add('active');
+    // --- Agent View Elements (Unchanged Logic) ---
+    const selectionContainer = document.getElementById('selection-container');
+    const agentView = document.getElementById('agent-view');
+    const agentInfoTitle = document.getElementById('agent-info-title');
+    const agentInfoDescription = document.getElementById('agent-info-description');
+    const backButton = document.getElementById('back-button');
 
-                agentInfoTitle.textContent = agentTitle;
-                agentInfoDescription.textContent = agentDesc;
+    const agentMessengers = {
+      'agent-1': document.getElementById('agent-1-messenger'),
+      'agent-2': document.getElementById('agent-2-messenger'),
+      'agent-3': document.getElementById('agent-3-messenger'),
+      'agent-4': document.getElementById('agent-4-messenger'),
+      'agent-5': document.getElementById('agent-5-messenger')
+    };
+    const cards = document.querySelectorAll('.card');
 
-                // Hide all messengers
-                Object.values(agentMessengers).forEach(messenger => messenger.classList.add('hidden'));
-                
-                // Show only the selected messenger
-                const selectedAgentMessenger = agentMessengers[agentId];
-                if (selectedAgentMessenger) {
-                    selectedAgentMessenger.classList.remove('hidden');
-                }
-            });
-        });
 
-        backButton.addEventListener('click', (event) => {
-            event.preventDefault();
-            agentView.classList.add('hidden');
-            agentView.classList.remove('active');
-            selectionContainer.classList.remove('hidden');
-            // Hide all messengers when returning to selection
-            Object.values(agentMessengers).forEach(messenger => messenger.classList.add('hidden'));
-        });
-    </script>
+    // --- Authentication Functions ---
+
+    function showMainContent() {
+      loginContainer.classList.add('hidden');
+      mainContent.classList.remove('hidden');
+      logoutButton.classList.remove('hidden');
+    }
+
+    function showLoginScreen() {
+      // If agent view is active, hide it when logging out
+      agentView.classList.add('hidden');
+      agentView.classList.remove('active');
+      selectionContainer.classList.remove('hidden');
+      Object.values(agentMessengers).forEach(messenger => messenger.classList.add('hidden'));
+
+      mainContent.classList.add('hidden');
+      loginContainer.classList.remove('hidden');
+      logoutButton.classList.add('hidden');
+      loginError.textContent = ''; // Clear error on logout
+      usernameInput.value = ''; // Clear inputs
+      passwordInput.value = '';
+    }
+
+    function handleLogin() {
+      const enteredUsername = usernameInput.value.trim();
+      const enteredPassword = passwordInput.value.trim();
+
+      const isUserValid = VALID_USERS.includes(enteredUsername);
+      const isPasswordCorrect = enteredPassword === TEMP_PASSWORD;
+
+      if (isUserValid && isPasswordCorrect) {
+        // Successful login
+        showMainContent();
+      } else if (isUserValid && !isPasswordCorrect) {
+        loginError.textContent = 'Incorrect password.';
+      } else {
+        // Failed login
+        loginError.textContent = 'Invalid username or password.';
+      }
+    }
+
+    // --- Event Listeners ---
+
+    loginButton.addEventListener('click', handleLogin);
+    logoutButton.addEventListener('click', showLoginScreen);
+
+    // Allow pressing Enter key on input fields
+    usernameInput.addEventListener('keypress', (event) => {
+      if (event.key === 'Enter') handleLogin();
+    });
+    passwordInput.addEventListener('keypress', (event) => {
+      if (event.key === 'Enter') handleLogin();
+    });
+
+
+    // --- Initial Check ---
+    showLoginScreen();
+
+
+    // --- AGENT SELECTION LOGIC (Unchanged) ---
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const agentId = card.dataset.agentId;
+        const agentTitle = card.dataset.agentTitle;
+        const agentDesc = card.dataset.agentDesc;
+
+        selectionContainer.classList.add('hidden');
+        agentView.classList.remove('hidden');
+        agentView.classList.add('active');
+
+        agentInfoTitle.textContent = agentTitle;
+        agentInfoDescription.textContent = agentDesc;
+
+        // Hide all messengers
+        Object.values(agentMessengers).forEach(messenger => messenger.classList.add('hidden'));
+
+        // Show only the selected messenger
+        const selectedAgentMessenger = agentMessengers[agentId];
+        if (selectedAgentMessenger) {
+          selectedAgentMessenger.classList.remove('hidden');
+        }
+      });
+    });
+
+    backButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      agentView.classList.add('hidden');
+      agentView.classList.remove('active');
+      selectionContainer.classList.remove('hidden');
+      // Hide all messengers when returning to selection
+      Object.values(agentMessengers).forEach(messenger => messenger.classList.add('hidden'));
+    });
+  </script>
 </body>
 
 </html>
