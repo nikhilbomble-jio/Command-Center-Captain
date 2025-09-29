@@ -329,6 +329,11 @@
                 <div class="card-title">Product Library Agent</div>
                 <div class="card-description">This agent provides detailed information on our product catalog.</div>
             </div>
+            <div class="card" data-agent-id="agent-5" data-agent-title="Datalake Captain" data-agent-desc="Supports SQL query generation for Datalake.">
+                <div class="card-icon"><i class="fas fa-database"></i></div>
+                <div class="card-title">Datalake Captain</div>
+                <div class="card-description">Supports SQL query generation for Datalake.</div>
+            </div>
         </div>
     </div>
 
@@ -377,6 +382,15 @@
                 max-query-length="-1">
                 <df-messenger-chat chat-title="Command Center Captain"></df-messenger-chat>
             </df-messenger>
+            <df-messenger id="agent-5-messenger" class="hidden"
+                location="asia-south1"
+                project-id="skilful-union-457923-e9"
+                agent-id="86c917b9-dfe6-4138-ad10-533f0d895464"
+                language-code="en"
+                max-query-length="-1"
+                allow-feedback="all">
+                <df-messenger-chat chat-title="Datalake Captain"></df-messenger-chat>
+            </df-messenger>
         </div>
     </div>
 
@@ -392,7 +406,8 @@
             'agent-2': document.getElementById('agent-2-messenger'),
             'agent-3': document.getElementById('agent-3-messenger'),
             // UPDATED: Added Agent 4 to the messenger map
-            'agent-4': document.getElementById('agent-4-messenger') 
+            'agent-4': document.getElementById('agent-4-messenger') ,
+            'agent-5': document.getElementById('agent-5-messenger') 
         };
         const cards = document.querySelectorAll('.card');
 
