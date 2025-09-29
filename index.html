@@ -34,7 +34,7 @@
       min-height: 100vh;
     }
 
-    /* Header */
+    /* Header (Desktop/Default) */
     .header {
       width: 100%;
       background-color: #fff;
@@ -51,11 +51,14 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      /* NEW: added for mobile transition */
+      justify-content: flex-start; 
     }
-    .header img {
-      height: 40px;
-      max-width: 100%;
+    /* NEW: This helper class is used only on mobile to wrap logo and title */
+    .header-content-mobile {
+      display: none; /* Hide on desktop */
     }
+    /* ORIGINAL: H1 style for desktop (centered in .header but with logos on left) */
     .header h1 {
       font-size: 1.8rem;
       font-weight: 700;
@@ -63,6 +66,11 @@
       margin: 0;
       text-align: center;
     }
+    .header img {
+      height: 40px;
+      max-width: 100%;
+    }
+
 
     /* Container */
     .container {
@@ -186,15 +194,31 @@
       --df-messenger-message-bot-background: #fff;
     }
 
-    /* Responsive */
+    /* Responsive Styles for Mobile (Max-width 768px) */
     @media (max-width: 768px) {
-
-      .header h1 {
-        margin-left: 10px; /* small spacing if needed */
-        justify-content: flex-end; /* push content to the right */
-        text-align: right;
-        font-size: 1.5rem;
+        .header-title-desktop {
+          display: none; /* Hide on mobile */
+        }
+      /* Mobile Header Centering Logic */
+      .header-logos {
+        /* Hide the default desktop logos element on mobile */
+        display: none; 
       }
+      .header-content-mobile {
+        /* Show the mobile content wrapper */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .header h1 {
+        /* Override desktop style to provide space below logo */
+        margin-top: 5px; 
+        font-size: 1.5rem;
+        /* Ensure it's centered */
+        text-align: center;
+      }
+      
+      /* Existing mobile layout fixes for cards/agents */
       .cards-container {
         flex-direction: column;
         align-items: center;
@@ -202,25 +226,37 @@
       .card {
         max-width: 90%;
       }
+      /* * FIX: Update the agent-view container 
+       * 1. Change height: 100vh to fit the screen size 
+       * 2. Added bottom padding for spacing below the send button.
+      */
       .agent-view {
         flex-direction: column;
-        height: auto;
+        height: calc(100vh - 70px); /* Use calc to subtract header height */
+        padding-bottom: 40px; /* Added spacing at the bottom */
       }
+      
       .agent-info-panel {
         max-width: 100%;
+        /* Adjusted height to be fixed/more predictable */
+        flex: 0 0 20vh;   
+        height: 20vh;     
+        overflow-y: auto;
       }
       .agent-container-full {
-        flex: 1;
         max-width: 100%;
-        height: 60vh;
+        /* Adjusted height to take the rest of the available space */
+        flex: 1;
+        height: 100%; /* Will grow to fill the remaining space */
+        min-height: 60vh; /* Ensure minimum size */
       }
     }
 
     @media (max-width: 480px) {
+       .header-title-desktop {
+      display: none; /* Hide on mobile */
+    }
       .header h1 {
-        margin-left: 10px; /* small spacing if needed */
-        justify-content: flex-end; /* push content to the right */
-        text-align: right;
         font-size: 1.3rem;
       }
       .card-title {
@@ -234,30 +270,10 @@
     .hidden {
       display: none !important;
     }
-
-    @media (max-width: 768px) {
-  .agent-view {
-    flex-direction: column;
-    height: 100vh; /* Fill screen */
-  }
-  .agent-info-panel {
-    max-width: 100%;
-    flex: 0 0 25%;   /* take 1/3rd height */
-    height: 25%;     /* fixed proportion */
-    overflow-y: auto;
-  }
-  .agent-container-full {
-    flex: 0 0 75%;   /* take 2/3rd height */
-    max-width: 100%;
-    height: 75%;
-  }
-}
-
   </style>
 </head>
 
 <body>
-  <!-- <div id="root"></div> -->
   <script type="module" src="/src/main.tsx"></script>
   <script>
     if ('serviceWorker' in navigator) {
@@ -276,7 +292,15 @@
         <div class="header-logos">
             <img src="https://storage.googleapis.com/jpslimages/images/Jio%20Payment%20Solutions%20Ltd.%20(3)%20(1).png" alt="Jio Payment Solutions Logo" onerror="this.onerror=null; this.src='https://placehold.co/50x50/f3b561/fff?text=Logo';">
         </div>
-        <h1>Agent Garden</h1>
+        
+        <div class="header-content-mobile">
+            <div class="header-logos-mobile">
+                <img src="https://storage.googleapis.com/jpslimages/images/Jio%20Payment%20Solutions%20Ltd.%20(3)%20(1).png" alt="Jio Payment Solutions Logo" onerror="this.onerror=null; this.src='https://placehold.co/50x50/f3b561/fff?text=Logo';">
+            </div>
+            <h1>Agent Garden</h1>
+        </div>
+        
+        <h1 class="header-title-desktop">Agent Garden</h1>
     </div>
 
     <div class="container" id="selection-container">
